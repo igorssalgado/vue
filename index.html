@@ -5,10 +5,11 @@
 <body>
 
     <div id="app">
-        <h1 v-once>{{title}}</h1>
-        <p>{{sayHello()}} - <a v-bind:href="link">Google</a></p>
-        <hr>
-        <p v-html='finishedLink'></p>
+        <input id="count" v-model="count">
+        <!-- v-on:mousemove='updateCoordinates' -->
+        <button v-on:click="increase(count, $event), printCounter()">Click me</button>
+        <p id="sum">{{sum}}</p>
+        <!-- <p>Coordinates: {{ x }} / {{ y }}</p> -->
     </div>
     <script src="vue.js"></script>
     <script src="app.js"></script>
