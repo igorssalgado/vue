@@ -7,7 +7,7 @@
     <div id="app">
         <input id="count" v-model="count">
         <!-- v-on:mousemove='updateCoordinates' -->
-        <button v-on:click="increase(count, $event), printCounter()">Click me</button>
+        <button v-on:click="increase(count, $event), consoleCounter(), checkCounter(sum)">Click me to Add the number</button>
         <p id="sum">{{sum}}</p>
         <!-- <p>Coordinates: {{ x }} / {{ y }}</p> -->
     </div>

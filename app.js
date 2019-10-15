@@ -5,15 +5,22 @@ new Vue({
         x: 0,
         y: 0,
         count: 0,
-        print: ''
+        sumTemp: 0
     },
     methods: {
-        increase: function(count){
+        increase: function (count) {
+            this.sumTemp = this.sum;
             this.sum += Number(count);
         },
-        printCounter: function(){
-            console.log('adding: ' + this.count + ' total: ' + this.sum)
-            return print;
+        consoleCounter: function () {
+            console.log('adding: ' + this.count + ' total: ' + this.sum);
+            this.count = 0; //clear count and input field
+        },
+        checkCounter: function (count) {
+            if (isNaN(this.sum)) {
+                console.log('Count NaN keeping total:' + this.sumTemp);
+                this.sum = this.sumTemp;
+            }
         }
         // updateCoordinates: function(event){
         //     this.x = event.clientX;
