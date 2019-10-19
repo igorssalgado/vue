@@ -1,0 +1,26 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <div id="app" v-on:mousemove='updateCoordinates'>
+        <input id="count" v-model="count">
+        <button @click="increase(count)">Click me to Add the number</button>
+        <button @click="sum++">Click me to Add 1</button>
+        <p id="sum">{{sum}} {{sum % 3 == 0 ? 'é primo' : 'num é primo'}}</p>
+        <p>
+            Coordinates: {{ x }} / {{ y }}
+            - <span @mousemove.stop="">{{ dead_spot }}</span>
+        </p>
+
+        <input type="text" v-model="dead_spot">
+        <br>
+        <br>
+        <input type="text" @keyup.enter.space="alertMe">
+    </div>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

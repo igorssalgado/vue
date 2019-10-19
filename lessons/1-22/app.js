@@ -5,7 +5,8 @@ new Vue({
         x: 0,
         y: 0,
         count: 0,
-        sumTemp: 0
+        sumTemp: 0,
+        dead_spot: ''
     },
     methods: {
         increase: function (count) {
