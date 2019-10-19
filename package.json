@@ -1,0 +1,27 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "https://learning.oreilly.com/videos/vue-js-2/9781788992817",
+  "main": "vue.js",
+  "dependencies": {
+    "eslint": "^6.5.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-airbnb-base": "^14.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorssalgado/vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorssalgado/vue/issues"
+  },
+  "homepage": "https://github.com/igorssalgado/vue#readme"
+}

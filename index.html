@@ -2,14 +2,13 @@
 
 <head></head>
 
-<body>
+<body >
 
-    <div id="app">
-        <input id="count" v-model="count">
-        <!-- v-on:mousemove='updateCoordinates' -->
-        <button v-on:click="increase(count, $event), consoleCounter(), checkCounter(sum)">Click me to Add the number</button>
+    <div id="app" v-on:mousemove='updateCoordinates'>
+        <input id="count" v-model="count" >
+        <button v-on:click="increase(count)" >Click me to Add the number</button>
         <p id="sum">{{sum}}</p>
-        <!-- <p>Coordinates: {{ x }} / {{ y }}</p> -->
+        <p>Coordinates: {{ x }} / {{ y }}</p>
     </div>
     <script src="vue.js"></script>
     <script src="app.js"></script>
