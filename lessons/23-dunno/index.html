@@ -4,8 +4,11 @@
 
 <body>
     <div id="app">
-        <input type="text">
-        <p>{{ name }}</p>
+        <button @click="counter++">Increase</button>
+        <button @click="counter--">Decrease</button>
+        <button @click="secondCounter++">Decrease</button>
+        <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+        <p>Result: {{ result() }} | {{ output }}</p>
     </div>
     <script src="vue.js"></script>
     <script src="app.js"></script>
