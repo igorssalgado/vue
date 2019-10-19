@@ -12,11 +12,10 @@ new Vue({
             this.ageTimesThree = this.age * 3;
         },
         randomFloat: function(){
-            this.random = Math.random();
+            return Math.random();
         }
     },
     created: function (){ // it runs when page loads!
-        this.randomFloat();
         this.ageByThree();
     }
 });
