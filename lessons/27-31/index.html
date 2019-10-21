@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+        <div class="demo" :class="{red: attachRed}"></div>
+        <div class="demo" :class="[color, {red: attachRed}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+    </div>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
