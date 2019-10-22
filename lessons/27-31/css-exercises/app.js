@@ -10,7 +10,8 @@ new Vue({
     classOpt2: 'class2',
     classDiv: 'div1',
     backgroundColor: 'red',
-    progressBarSize: '5px'
+    progressBarSize: '5px',
+    valueEx4: 'maoe'
   },
   methods: {
     startEffect: function () {
@@ -21,18 +22,25 @@ new Vue({
     },
     activateClass3: function () {
       if (event.target.value === 'true' || event.target.value === 't') {
-        this.class3 = 'class3';
+        this.classDiv = 'div2';
+        this.valueEx4 = 'maoe ta true'
       } else {
-        this.class3 = !this.class3;
+        this.classDiv = !this.classDiv;
+        this.valueEx4 = 'maoe ta falso'
       }
     },
     progressBarFunction: function () {
       let count = 5;
       console.log('clicou')
         setInterval(() => {
-          this.progressBarSize = count + 'px';
           count+=50;
-          console.log(count)
+          if(count>500){
+            return;
+          }else{
+            this.progressBarSize = count + 'px';
+            console.log(count)
+          }
+
         }, 1000);
     }
   },

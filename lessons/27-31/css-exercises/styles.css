@@ -28,6 +28,22 @@
   background-color: gray;
   display: inline-block;
   margin: 10px;
+  text-align: center;
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle
+}
+
+.div2{
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .class3{
