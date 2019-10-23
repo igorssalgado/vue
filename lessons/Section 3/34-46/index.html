@@ -11,6 +11,11 @@
             <!-- v-for first element 'ingredient' is always the item and second 'i' is always the index -->
             <!-- for iterates the elements in the array ingredients in data (app.js)-->
         </ul>
+
+        <template v-for="(ingredient, i) in ingredients">
+            <h1>{{ ingredient }}</h1>
+            <p>{{ i }}</p>
+        </template>
     </div>
 
     <script src="vue.js"></script>
