@@ -11,7 +11,17 @@
             <!-- v-for first element 'ingredient' is always the item and second 'i' is always the index -->
             <!-- for iterates the elements in the array ingredients in data (app.js)-->
         </ul>
+        <hr>
 
+        <ul>
+            <li v-for="person in persons">
+                <div v-for="(value, key, i) in person">{{ key }}: {{ value }} ({{ i }}) </div>
+                <!-- it is looping thru Object values and also listing each of its keys (key: name, value: name)-->
+                <!-- v-for first element 'value' is always the item and second 'key' is always the index -->
+            </li>
+        </ul>
+
+        <hr>
         <template v-for="(ingredient, i) in ingredients">
             <h1>{{ ingredient }}</h1>
             <p>{{ i }}</p>
