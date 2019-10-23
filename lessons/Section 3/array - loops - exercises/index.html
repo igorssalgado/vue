@@ -1,9 +1,4 @@
 <html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
 <body>
   <div id="exercise">
     <!-- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference -->
@@ -24,9 +19,8 @@
     </ul>
     <!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
     <ul>
-      <li v-show="!show" v-for="(value, key, index) in testData">
-        {{ index == 2 ? '' : show = !show }}
-        {{value}}
+      <li v-show="show" v-for="(value, key, index) in testData">
+          {{ index == 2 ? (value, show = !show) : show = !show }}        
       </li>
     </ul>
   </div>
