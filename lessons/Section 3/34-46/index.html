@@ -20,6 +20,7 @@
                 <!-- v-for first element 'value' is always the item and second 'key' is always the index -->
             </li>
         </ul>
+        <span v-for="(n,i) in 10">{{ n }} {{ i == 9 ? '' : ' - '}}</span>
 
         <hr>
         <template v-for="(ingredient, i) in ingredients">
