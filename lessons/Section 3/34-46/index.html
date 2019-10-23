@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="show">You can see me! <span>Hello!</span></p>
+        <!-- v-if/v-else check if passed element is true or false and complete removes the element to the DOM-->
+        <p v-else>Now you see me!</p>
+        <template v-if="show">
+            <!-- template groups html elements-->
+            <h1>Heading</h1>
+            <p>Inside template</p>
+        </template>
+        <p v-show="show">Do you also see me?</p>
+        <!-- v-show remove but it stil keep on the html > style="display: none" -->
+        <button @click="show = !show">Switch</button>
+    </div>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
