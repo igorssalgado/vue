@@ -7,7 +7,8 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+            <li v-for="(ingredient, i) in ingredients">{{ ingredient }}({{ i }})</li>
+            <!-- v-for first element 'ingredient' is always the item and second 'i' is always the index -->
             <!-- for iterates the elements in the array ingredients in data (app.js)-->
         </ul>
     </div>
