@@ -6,7 +6,7 @@ new Vue({
     class1: 'class1',
     class2: 'class2',
     class3: 'class3',
-    classOpt1: 'class1',
+    classOpt1: '',
     classOpt2: 'class2',
     classDiv: 'div1',
     backgroundColor: 'red',
@@ -15,10 +15,13 @@ new Vue({
   },
   methods: {
     startEffect: function () {
+      let highlight = true;
       this.classSwitch = 'highlight';
       setInterval(() => {
-        this.classSwitch = 'shrink';
-      }, 5000);
+        this.classSwitch = highlight ? 'highlight' : 'shrink';
+        highlight = !highlight;
+        // this.classSwitch = 'shrink';
+      }, 1000);
     },
     activateClass3: function () {
       if (event.target.value === 'true' || event.target.value === 't') {
