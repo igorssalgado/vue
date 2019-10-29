@@ -12,25 +12,27 @@
     <div id="app">
         <section class="row">
             <div class="small-6 columns">
-                <h1 class="text-center">YOU</h1>
-                <div class="healthbar">
-                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="{ width: yourHealthBar }">
-                        {{ yourHealth }}
+                <h1 class="text-center" :style="{ color: yourDeadColor }">YOU</h1>
+                <p class="text-center" :style="{ color: yourDeadColor }">{{ yourHealth == 0 ? 'Click START' : yourHealth }}</p>
+                <div v-if="show" class="healthbar text-center" :style="{ backgroundColor: yourDeadColor }">
+                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                        :style="{ width: yourHealthBar }">
                     </div>
                 </div>
             </div>
             <div class="small-6 columns">
-                <h1 class="text-center">MONSTER</h1>
-                <div class="healthbar">
-                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="{ width: monsterHealthBar }" >
-                        {{ monsterHealth }}
+                <h1 class="text-center" :style="{ color: monsterDeadColor }" >MONSTER</h1>
+                <p class="text-center" :style="{ color: monsterDeadColor }"> {{ monsterHealth == 0? 'Click START' : monsterHealth }}</p>
+                <div v-if="show" class="healthbar">
+                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                        :style="{ width: monsterHealthBar }">
                     </div>
                 </div>
             </div>
         </section>
         <section v-if="!show" class="row controls">
             <div class="small-12 columns">
-                <button @click="newGame" id="start-game">START NEW GAME</button>
+                <button @click="newGame" id="start-game">START</button>
             </div>
         </section>
         <section v-if="show" class="row controls">

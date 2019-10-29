@@ -7,16 +7,19 @@ new Vue({
         yourHealthBar: 0,
         monsterHealthBar: 0,
         yourStrength: 3,
-        monsterStrength: 10
+        monsterStrength: 2,
+        yourDeadColor: '',
+        monsterDeadColor: ''
     },
     methods: {
         newGame: function () {
-            this.show = !this.show;
+            this.show = !this.show; // quando clica start exibe a vida, a barra de vida e os botoes para o jogo.
             this.monsterHealth = 100;
             this.yourHealth = 100;
             this.yourHealthBar = 100 + '%';
             this.monsterHealthBar = 100 + '%';
-            this.deadColor = !this.deadColor;
+            this.yourDeadColor = '';
+            this.monsterDeadColor = '';
         },
         attack: function () {
             // monster health
@@ -51,16 +54,23 @@ new Vue({
     watch: {
         yourHealth: function (value) {
             if (this.yourHealth <= 0) {
-                this.yourHealth = 0;
+                this.yourHealth = 'YOU ARE DEAD';
                 this.yourHealthBar = 0;
-                this.deadColor = 'red';
+                this.yourDeadColor = 'red'
+                
+                this.show = !this.show; 
+                // quando morre 'yourHealth = 0' 
+                // esconde a vida, a barra de vida e os botoes para o jogo e volta o botao pra começar.
+                
                 console.log('you died');
             }
         },
         monsterHealth: function (value) {
             if (this.monsterHealth <= 0) {
-                this.monsterHealth = 0;
+                this.monsterHealth = 'DEAD';
                 this.monsterHealthBar = 0;
+                this.monsterDeadColor = 'red'
+                this.show = !this.show;
                 console.log('you won');
             }
         }
