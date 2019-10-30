@@ -12,7 +12,7 @@
     <div id="app">
         <section class="row">
             <div class="small-6 columns">
-                <h1 class="text-center" :style="{ color: yourDeadColor }">YOU</h1>
+                <h1 class="text-center" :style="{ color: yourDeadColor }">{{ you == ''? 'Your name' : you }}</h1>
                 <p class="text-center" :style="{ color: yourDeadColor }">{{ yourHealth == 0 ? 'Click START' : yourHealth }}</p>
                 <div v-if="show" class="healthbar text-center" :style="{ backgroundColor: yourDeadColor }">
                     <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
@@ -32,6 +32,7 @@
         </section>
         <section v-if="!show" class="row controls">
             <div class="small-12 columns">
+                <input @keyup.enter="newGame()" v-model='you' placeholder="Insert your name here!">
                 <button @click="newGame" id="start-game">START</button>
             </div>
         </section>
