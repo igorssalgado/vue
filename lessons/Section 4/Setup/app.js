@@ -3,6 +3,8 @@ new Vue({
     data: {
         you: '',
         gameIsRunning: false,
+        loser: false,
+        loser2: true,
         restart: false,
         yourHealth: 0,
         monsterHealth: 0,
@@ -56,7 +58,9 @@ new Vue({
             }
         },
         giveUp: function () {
-
+            let vm = this;
+            vm.gameIsRunning = false;
+            vm.loser = true;
         },
         monsterAttack: function (attack) {
             let vm = this;
