@@ -12,36 +12,41 @@
     <div id="app">
         <section class="row">
             <div class="small-6 columns">
-                <h1 class="text-center" :style="{ color: yourDeadColor }">{{ you == ''? 'Your name' : you }}</h1>
-                <p class="text-center" :style="{ color: yourDeadColor }">{{ yourHealth == 0 ? 'Click START' : yourHealth }}</p>
-                <div v-if="show" class="healthbar text-center" :style="{ backgroundColor: yourDeadColor }">
+                <h1 class="text-center" :style="{ color: yourColor }">{{ you == ''? 'Your name' : you }}</h1>
+                <p class="text-center" :style="{ color: yourColor }">{{ yourHealth == 0 ? 'Click START' : yourHealth }}</p>
+                <div v-if="gameIsRunning" class="healthbar text-center" :style="{ backgroundColor: yourColor }">
                     <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
-                        :style="{ width: yourHealthBar }">
+                        :style="{ width: yourHealth + '%' }">
                     </div>
                 </div>
             </div>
             <div class="small-6 columns">
-                <h1 class="text-center" :style="{ color: monsterDeadColor }" >MONSTER</h1>
-                <p class="text-center" :style="{ color: monsterDeadColor }"> {{ monsterHealth == 0? 'Click START' : monsterHealth }}</p>
-                <div v-if="show" class="healthbar">
+                <h1 class="text-center" :style="{ color: monsterColor }" >MONSTER</h1>
+                <p class="text-center" :style="{ color: monsterColor }"> {{ monsterHealth == 0? 'Click START' : monsterHealth }}</p>
+                <div v-if="gameIsRunning" class="healthbar">
                     <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
-                        :style="{ width: monsterHealthBar }">
+                        :style="{ width: monsterHealth + '%' }">
                     </div>
                 </div>
             </div>
         </section>
-        <section v-if="!show" class="row controls">
+        <section v-if="!gameIsRunning && !restart" class="row controls">
             <div class="small-12 columns">
                 <input @keyup.enter="newGame()" v-model='you' placeholder="Insert your name here!">
                 <button @click="newGame" id="start-game">START</button>
             </div>
         </section>
-        <section v-if="show" class="row controls">
+        <section v-if="restart" class="row controls">
+            <div class="small-12 columns">
+                <button @click="newGame" id="start-game">RESTART</button>
+            </div>
+        </section>
+        <section v-if="gameIsRunning" class="row controls">
             <div class="small-12 columns">
                 <button id="attack" @click="attack">ATTACK</button>
                 <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
                 <button id="heal" @click="heal">HEAL</button>
-                <button id="give-up">GIVE UP</button>
+                <button id="give-up" @click="giveUp">GIVE UP</button>
             </div>
         </section>
         <section class="row log">
