@@ -14,6 +14,9 @@
             <section>
                 <p><img class="portrait"
                         src="https://images.theweek.com/sites/default/files/styles/tw_image_9_4/public/beto_loser.jpg.webp?itok=jXHTUa1g&resize=1200x1200">
+                    <div class="small-12 columns">
+                        <button @click="newGame" id="start-game">RESTART</button>
+                    </div>
                 </p>
             </section>
         </div>
@@ -63,8 +66,8 @@
             <section class="row log">
                 <div class="small-12 columns">
                     <ul>
-                        <li>
-
+                        <li v-for="turn in turns">
+                            {{turn.text}}
                         </li>
                     </ul>
                 </div>

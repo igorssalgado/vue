@@ -4,7 +4,6 @@ new Vue({
         you: '',
         gameIsRunning: false,
         loser: false,
-        loser2: true,
         restart: false,
         yourHealth: 0,
         monsterHealth: 0,
@@ -12,12 +11,14 @@ new Vue({
         monsterStrength: 2,
         yourColor: '',
         monsterColor: '',
-        showHoldButton: false
+        showHoldButton: false,
+        turns: []
     },
     methods: {
         newGame: function () {
             let vm = this;
-
+            vm.turns = [{ text: 'STARTING NEW GAME!' }]
+            vm.loser = false;
             vm.restart = false;
             vm.gameIsRunning = true; // exibe a vida, a barra de vida e os botoes para o jogo.
             vm.monsterHealth = 100;
@@ -31,8 +32,12 @@ new Vue({
             let yourAttack = vm.calculateDamage(5, 10);
             vm.monsterHealth = vm.monsterHealth - yourAttack;
 
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player hits monster for ' + yourAttack
+            });
             // console.log('your attack >>> ' + yourAttack)
-            vm.monsterAttack(yourAttack)
+            vm.monsterAttack(yourAttack + 5)
         },
         specialAttack: function () {
             let vm = this;
@@ -41,7 +46,11 @@ new Vue({
             vm.monsterHealth = vm.monsterHealth - yourAttack;
 
             // console.log('your attack >>> ' + yourAttack)
-            vm.monsterAttack(yourAttack)
+            // vm.monsterAttack(yourAttack)
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player hits monster for ' + yourAttack
+            });
         },
         heal: function () {
             let vm = this;
@@ -50,7 +59,7 @@ new Vue({
                 if (vm.yourHealth >= 90) {
                     vm.yourHealth = 100
                 } else {
-                    vm.yourHealth += 10;
+                    vm.yourHealth += heal;
                 }
                 setTimeout(() => {
                     vm.monsterAttack()
@@ -64,12 +73,17 @@ new Vue({
         },
         monsterAttack: function (attack) {
             let vm = this;
-           //  console.log('Monster attack')
+            //  console.log('Monster attack')
             //your health
-            let monsterAttack = !attack ? vm.calculateDamage(5, 10) : attack;
+            let monsterAttack = !attack ? vm.calculateDamage(1, 10) : vm.calculateDamage(1, attack);
             vm.yourHealth = Math.floor(vm.yourHealth - monsterAttack);
 
-           //  console.log('monster attack >>> ' + monsterAttack)
+            this.turns.unshift({
+                isPlayer: false,
+                text: 'Monster hits player for ' + monsterAttack
+            });
+
+            //  console.log('monster attack >>> ' + monsterAttack)
         },
         calculateDamage: function (min, max) {
             let damage = Math.max(Math.floor(Math.random() * max) + 1, min);
@@ -83,6 +97,7 @@ new Vue({
     watch: {
         yourHealth: function (value) {
             let vm = this;
+
             if (vm.yourHealth <= 0) {
                 vm.yourHealth = 'YOU ARE DEAD';
                 vm.yourColor = 'red'
@@ -99,7 +114,6 @@ new Vue({
             if (vm.monsterHealth <= 0) {
                 vm.monsterHealth = 'DEAD';
                 vm.monsterColor = 'red'
-
                 vm.gameIsRunning = !vm.gameIsRunning;
                 // quando morre 'monsterHealth = 0' 
                 // esconde a vida, a barra de vida e os botoes para o jogo e volta o botao pra começar.
