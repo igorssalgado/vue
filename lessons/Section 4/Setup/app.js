@@ -34,7 +34,7 @@ new Vue({
 
             this.turns.unshift({
                 isPlayer: true,
-                text: 'Player hits monster for ' + yourAttack
+                text: vm.you + ' hits monster for ' + yourAttack
             });
             // console.log('your attack >>> ' + yourAttack)
             vm.monsterAttack(yourAttack + 5)
@@ -49,15 +49,21 @@ new Vue({
             // vm.monsterAttack(yourAttack)
             this.turns.unshift({
                 isPlayer: true,
-                text: 'Player hits monster for ' + yourAttack
+                text: vm.you + ' hits monster for ' + yourAttack
             });
         },
         heal: function () {
             let vm = this;
-            let heal = 10;
+            let heal = 8;
+            if(vm.yourHealth == 100) {
+                heal = 0;
+            }
+
             if (vm.yourHealth < 100) {
                 if (vm.yourHealth >= 90) {
+                    let previousHealth = vm.yourHealth
                     vm.yourHealth = 100
+                    heal = previousHealth - 100
                 } else {
                     vm.yourHealth += heal;
                 }
@@ -65,6 +71,10 @@ new Vue({
                     vm.monsterAttack()
                 }, 1000);
             }
+            this.turns.unshift({
+                isPlayer: true,
+                text: vm.you + ' healed ' + Math.abs(heal) + '%'
+            });
         },
         giveUp: function () {
             let vm = this;
