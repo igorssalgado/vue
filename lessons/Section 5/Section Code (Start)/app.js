@@ -1,56 +1,35 @@
-Vue.component('hello', {
-  template: '<h1>Hello!</h1>'
-});
-
-let vm1 = new Vue({
-  el: '#app1',
+new Vue({
+  el: '#app',
   data: {
     title: 'The VueJS Instance',
-    showParagraph: false
   },
-  methods: {
-    show: function() {
-      this.showParagraph = true;
-      this.updateTitle('The VueJS Instance (Updated)');
-      this.$refs.myButton.innerText = 'test';
-    },
-    updateTitle: function(title) {
-      this.title = title;
-    }
+  beforeCreate: function(){
+    console.log('beforeCreate()');
   },
-  computed: {
-    lowercaseTitle: function() {
-      return this.title.toLowerCase();
-    }
+  created: function(){
+    console.log('created()');
   },
-  watch: {
-    title: function(value) {
-      alert('Title changed, new value: ' + value);
-    }
-  }
-});
-
-vm1.$refs.heading.innerText = "maoe"
-
-setTimeout(() => {
-  vm1.title = 'Changed by timer'
-}, 2000);
-
-
-let vm2 = new Vue({
-  el: '#app2',
-  data: {
-    title: 'The second VueJS Instance',
+  beforeMount: function(){
+    console.log('beforeMount()');
+  },
+  mounted: function(){
+    console.log('mounted()');
+  },
+  beforeUpdate: function(){
+    console.log('beforeUpdate()');
+  },
+  updated: function(){
+    console.log('updated()');
+  },
+  beforeDestroyed: function(){
+    console.log('beforeDestroyed()');
+  },
+  destroyed: function(){
+    console.log('destroyed()');
   },
   methods:{
-    onChange: function(){
-      vm1.title= 'Changed'
+    destroy: function(){
+      this.$destroy();
     }
-  }
+  } 
 });
-
-let vm3 = new Vue({
-  el: '#app3'
-});
-
-
