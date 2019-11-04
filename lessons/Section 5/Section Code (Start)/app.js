@@ -1,3 +1,7 @@
+Vue.component('hello', {
+  template: '<h1>Hello!</h1>'
+});
+
 let vm1 = new Vue({
   el: '#app1',
   data: {
@@ -44,4 +48,9 @@ let vm2 = new Vue({
     }
   }
 });
+
+let vm3 = new Vue({
+  el: '#app3'
+});
+
 
