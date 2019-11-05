@@ -12,7 +12,11 @@ new Vue({
         yourColor: '',
         monsterColor: '',
         showHoldButton: false,
-        turns: []
+        turns: [],
+        healButtonDisabled: true,
+        specialAttackButtonDisabled: true,
+        timesAttack: 0,
+        disabledTimes: 10
     },
     methods: {
         newGame: function () {
@@ -26,7 +30,8 @@ new Vue({
             vm.yourHealth = 100;
             vm.yourColor = '';
             vm.monsterColor = '';
-            vm.you = vm.you.toUpperCase()
+            vm.you = vm.you.toUpperCase();
+            vm.specialAttackButtonDisabled = true;
             if (vm.you == '') {
                 vm.you = 'Player Unknow'
             }
@@ -43,6 +48,12 @@ new Vue({
             });
             // console.log('your attack >>> ' + yourAttack)
             vm.monsterAttack(yourAttack + 5)
+            vm.timesAttack += 1;
+            if(vm.timesAttack > vm.disabledTimes){
+                vm.specialAttackButtonDisabled = false;
+                vm.timesAttack = 0;
+                vm.disabledTimes +=3 
+            }
         },
         specialAttack: function () {
             let vm = this;
@@ -56,6 +67,8 @@ new Vue({
                 isPlayer: true,
                 text: vm.you + ' hits monster HARD for ' + yourAttack
             });
+
+            vm.specialAttackButtonDisabled = true;
         },
         heal: function () {
             let vm = this;
@@ -124,6 +137,14 @@ new Vue({
                 // esconde a vida, a barra de vida e os botoes para o jogo e volta o botao pra começar.
                 vm.restart = true;
             }
+
+            if (vm.yourHealth < 100) {
+                vm.healButtonDisabled = false;
+            } else if (vm.yourHealth == 100) {
+                vm.healButtonDisabled = true;
+            }
+
+
         },
         monsterHealth: function (value) {
             let vm = this;
