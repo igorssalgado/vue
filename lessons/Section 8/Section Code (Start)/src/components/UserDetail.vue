@@ -3,7 +3,8 @@
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
     <p>User Name: {{ name }} - {{ switchName() }}</p>
-    <button @click="resetName()">Reset Name</button>
+    <p>User Age: {{ userAge }}</p>
+    <button @click="resetN()">Reset Name</button>
   </div>
 </template>
 
@@ -12,14 +13,16 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'String'
-    }
+      default: 'String',
+    },
+    resetN: Function,
+    userAge: Number
   },
   methods: {
     switchName () {
       return this.name.split('').reverse().join('');
     },
-    resetName(){
+    resetName () {
       this.name = 'Igor';
       this.$emit('nameWasReseted', this.name)
     }
