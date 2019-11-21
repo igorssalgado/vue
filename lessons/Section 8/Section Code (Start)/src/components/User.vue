@@ -6,7 +6,7 @@
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail :name="name"></app-user-detail>
+        <app-user-detail :name="name" @nameWasReseted="name = $event"></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
         <app-user-edit></app-user-edit>
@@ -27,11 +27,7 @@ export default {
   },
   methods: {
     changeName () {
-      if (this.name !== 'Igor') {
-        this.name = 'Igor';
-      } else {
-        this.name = 'Joao';
-      }
+      this.name = 'Joao';
     },
   },
   components: {
