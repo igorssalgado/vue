@@ -3,7 +3,6 @@
     <h1>The User Component</h1>
     <p>I'm an awesome User!</p>
     <button @click="changeName">Change my name</button>
-    <button @click="changeEdit">Edit the edit</button>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
@@ -28,7 +27,11 @@ export default {
   },
   methods: {
     changeName () {
-      this.name = 'Joao'
+      if (this.name !== 'Igor') {
+        this.name = 'Igor';
+      } else {
+        this.name = 'Joao';
+      }
     },
   },
   components: {
