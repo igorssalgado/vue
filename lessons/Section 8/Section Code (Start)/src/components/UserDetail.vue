@@ -2,32 +2,42 @@
   <div class="component">
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
-    <p>User Name: {{ name }} - {{ switchName() }}</p>
-    <p>User Age: {{ userAge }}</p>
-    <button @click="resetN()">Reset Name</button>
+    <p>User name: {{ myName }} > {{ switchName() }}</p>
+    <p>Age: {{ userAge }}</p>
+    <button @click="resetName()">Reset Name</button>
+    <button @click="resetFn()">Reset Name again</button>
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
+
 export default {
   props: {
-    name: {
-      type: String,
-      default: 'String',
+    myName: {
+      type: String
     },
-    resetN: Function,
+    resetFn: Function,
     userAge: Number
   },
   methods: {
-    switchName () {
-      return this.name.split('').reverse().join('');
+    switchName() {
+      return this.myName
+        .split("")
+        .reverse()
+        .join("");
     },
-    resetName () {
-      this.name = 'Igor';
-      this.$emit('nameWasReseted', this.name)
+    resetName() {
+      this.myName = "Igor";
+      this.$emit("nameWasReset", this.myName);
     }
+  },
+  created() {
+    eventBus.$on('userAgeWasEdited', (data) => {
+        this.userAge = data;
+    });
   }
-}
+};
 </script>
 
 <style scoped>
