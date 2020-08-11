@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="addNumber(2, $event)">Click me</button>
+        <p>{{ num }}</p>
+        <p id="coords" class="hidden">{{ x }} / {{ y }}</p>
+        <p v-html="imgLink" v-on:mousemove="updateCoordinates"></p>
+        <input type="text" v-on:keyup.enter="alertMe">
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 0,
+                x: 0,
+                y: 0,
+                imgLink: '<img style="width:100px;height:150px" src="big-brother.jpg">'
+            },
+            methods: {
+                addNumber: function (number, event) {
+                    this.num += number;
+                },
+                updateCoordinates: function (event) {
+                    if (event.clientX <= 108) {
+                        this.x = event.clientX;
+                        this.y = event.clientY;
+                        this.imgLink = '<img style="width:100px;height:150px" src="big-brother.jpg">'
+                    }else{
+                        this.x = 'no image';
+                        this.y = 'no image';
+                        this.imgLink = '<img style="width:100px;height:150px" src="big-brother-NOT.jpg">'
+                    }
+                },
+                alertMe: function () {
+                    alert('alert');
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
