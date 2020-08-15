@@ -22,14 +22,14 @@
     <div :class="['size', 'red']">I got no class :(</div>
     <!-- 3) Let the user enter a class (create some example classes) and attach it -->
     <div>
-      <input type="text">
-      <div></div>
+      <input type="text" v-model="classe">
+      <div :class="classe">LITTLE TEXT</div>
     </div>
     <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
     <div>
-      <input type="text">
-      <input type="text">
-      <div></div>
+      <input type="text" v-model="classe2">
+      <input type="text" v-model="trueorfalse">
+      <div :class="trueorfalse != 'f' ? classe2 : 'little'">ANOTHER TEXT</div>
     </div>
     <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
     <div>

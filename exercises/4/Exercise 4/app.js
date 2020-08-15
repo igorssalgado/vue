@@ -1,7 +1,10 @@
 new Vue({
   el: '#exercise',
   data: {
-    effects: 'highlight'
+    effects: 'highlight',
+    classe: 'red',
+    classe2: 'big',
+    trueorfalse: 'f'
   },
   methods: {
     startEffect: function () {
