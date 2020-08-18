@@ -31,3 +31,16 @@
   color: black;
   font-size: 5px;
 }
+
+.default {
+  color: black;
+  font-size: 12px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  display: inline-block;
+  margin: 10px;
+}

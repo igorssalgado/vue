@@ -27,19 +27,24 @@
     </div>
     <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
     <div>
+      <input type="text" v-model="boolean">
       <input type="text" v-model="classe2">
-      <input type="text" v-model="trueorfalse">
-      <div :class="trueorfalse != 'f' ? classe2 : 'little'">ANOTHER TEXT</div>
+      <div :class="boolean != 'true' ? 'default' : classe2">ANOTHER TEXT</div>
+      <!-- <div :class="trueorfalse != 'f' ? classe2 : 'little'">ANOTHER TEXT</div> -->
     </div>
     <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+    <hr>
+    <hr>
     <div>
-      <input type="text">
-      <div></div>
+      <input type="text" v-model="estilo">
+      <div :style="estilo">LITTLE TEXT FROM EX5</div>
     </div>
     <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
     <div>
-      <button>Start Progress</button>
-      <div></div>
+      <button @click="progressBar()" >Start Progress</button>
+      <div>
+        <p class="square" :style="{ height: '15px', width: width + 'px', backgroundColor: progressBarColor}"></p>
+      </div>
     </div>
   </div>
 
